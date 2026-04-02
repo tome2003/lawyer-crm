@@ -1,5 +1,5 @@
-import { CrmDashboard } from "@/components/crm-dashboard";
+import { CrmDashboardHome } from "@/components/crm-dashboard-home";
 
 export default function DashboardPage() {
-  return <CrmDashboard />;
+  return <CrmDashboardHome />;
 }
