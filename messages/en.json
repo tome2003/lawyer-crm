@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "title": "Lex — Legal counsel in Portugal",
+    "description": "Find verified practitioners based in Portugal. Bilingual directory and LexOS workspace for lawyers serving the Portuguese market."
+  },
+  "nav": {
+    "findExpert": "Find your expert",
+    "login": "Log in",
+    "joinLawyer": "Join as Lawyer",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "en": "English",
+    "pt": "Portuguese"
+  },
+  "home": {
+    "eyebrow": "Independent legal directory",
+    "headline": "Counsel,",
+    "headlineAccent": "elevated.",
+    "sub": "Discreet access to experienced practitioners. Judgment, clarity, and uncompromising standards.",
+    "heroForLawyersEyebrow": "For counsel & firms",
+    "heroStatsAria": "Platform outcomes for lawyers",
+    "stat1Value": "2.5×",
+    "stat1Label": "More qualified leads",
+    "stat1Sub": "Median inquiry uplift after listing on Lex",
+    "stat2Value": "94%",
+    "stat2Label": "Same‑day client replies",
+    "stat2Sub": "Partners using LexOS response playbooks",
+    "stat3Value": "−40%",
+    "stat3Label": "Intake & follow‑up admin",
+    "stat3Sub": "With structured requests, templates, and routing",
+    "stat4Value": "4.8★",
+    "stat4Label": "Avg. client experience score",
+    "stat4Sub": "Post‑matter feedback, rolling 90 days",
+    "statDisclaimer": "Illustrative benchmarks from Lex partner programs; your results will vary by practice and market.",
+    "heroLawyersPitch": "Earn visibility with buyers who already compare credentials, then deliver a faster, clearer client experience from LexOS.",
+    "searchPlaceholder": "Practice area, jurisdiction, or name…",
+    "search": "Search",
+    "filtersHint": "Refine before you search — same filters as the full directory.",
+    "whyTitle": "Why use Lex",
+    "whySub": "From first search to a stronger matter strategy — a single place to discover counsel, compare credentials, and keep your legal work coherent.",
+    "why1Title": "Find your lawyer",
+    "why1Body": "Search by expertise and geography, then open structured profiles with rates, peer signals, and representative matters — so you shortlist counsel with confidence.",
+    "why2Title": "Organized matter intelligence",
+    "why2Body": "See credentials, jurisdictions, and engagement patterns in one consistent layout. Less guesswork hunting facts across websites, PDFs, and email threads.",
+    "why3Title": "Improve how you run the case",
+    "why3Body": "Better intake and clearer documentation mean fewer surprises. When you already understand fit and scope, you move faster on strategy, budgets, and deadlines.",
+    "featuredTitle": "Featured partners",
+    "featuredSub": "Peer-respected practitioners across core commercial disciplines.",
+    "browseDirectory": "Browse full directory",
+    "viewProfile": "View profile",
+    "partnerReviews": "{count} reviews",
+    "partnerListedRate": "Listed rate",
+    "featuredAreaLabel": "Where do you need counsel?",
+    "featuredAreaHint": "We’ll highlight partners who practice in that market.",
+    "featuredAllAreas": "All featured markets",
+    "featuredNearMe": "Use my location",
+    "featuredLocating": "Finding closest market…",
+    "featuredLocUnavailable": "Location unavailable — pick a city below.",
+    "featuredLocDenied": "Enable location in your browser to use this.",
+    "featuredShowingIn": "Partners in {area}",
+    "featuredShowingAll": "Featured partners in every market"
+  },
+  "findExpert": {
+    "eyebrow": "Counsel directory",
+    "title": "Find your expert",
+    "sub": "Search by keyword, refine by practice and jurisdiction, and review counsel credentials before you inquire.",
+    "searchPlaceholder": "Name, firm, practice, city…",
+    "search": "Search",
+    "refineTitle": "Refine results",
+    "practiceArea": "Practice area",
+    "location": "Location",
+    "sortBy": "Sort by",
+    "sortRating": "Highest rated",
+    "sortReviews": "Most reviews",
+    "sortName": "Name (A–Z)",
+    "allAreas": "All areas",
+    "allLocations": "All locations",
+    "applyFilters": "Apply filters",
+    "clearAll": "Clear all",
+    "resultsCount": "{count, plural, one {# expert} other {# experts}}",
+    "matching": "matching “{q}”",
+    "emptyTitle": "No experts match",
+    "emptySub": "Loosen filters or try a shorter keyword.",
+    "resetDirectory": "Reset directory",
+    "rateLabel": "View profile",
+    "poweredBy": "Cards list hourly rates as provided by counsel."
+  },
+  "profile": {
+    "backDirectory": "Back to directory",
+    "requestConsultation": "Request consultation",
+    "viewCredentials": "View credentials",
+    "overview": "Overview",
+    "notableMatters": "Notable matters",
+    "details": "Details",
+    "location": "Location",
+    "rate": "Rate",
+    "education": "Education",
+    "admissions": "Admissions"
+  },
+  "credentials": {
+    "back": "Back to profile",
+    "title": "Credentials & admissions",
+    "education": "Education",
+    "educationNote": "Additional CLE and executive programs available upon request during intake.",
+    "barAdmissions": "Bar admissions",
+    "representativeMatters": "Representative matters",
+    "mattersNote": "Detailed matter lists and references are shared under engagement and confidentiality agreements. Public indicators appear on the main profile.",
+    "requestConsultation": "Request consultation"
+  },
+  "consult": {
+    "back": "Back to profile",
+    "title": "Request a consultation",
+    "with": "With {name} — {specialty}",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "matter": "Brief description of your matter",
+    "matterPlaceholder": "Do not include confidential details you are uncomfortable sharing online.",
+    "contactWindow": "Preferred contact window",
+    "optionBusiness": "Business hours (ET)",
+    "optionEvenings": "Evenings",
+    "optionEither": "Either",
+    "submit": "Submit request",
+    "successTitle": "Request received",
+    "successBody": "Thank you. {name} or their office will respond shortly to coordinate a confidential consultation.",
+    "backLex": "Back to Lex"
+  },
+  "login": {
+    "title": "Welcome back",
+    "sub": "Sign in to your LexOS workspace.",
+    "email": "Email address",
+    "emailPh": "partner@firm.com",
+    "password": "Password",
+    "remember": "Remember me",
+    "forgot": "Forgot password?",
+    "submit": "Access workspace",
+    "noAccount": "Not admitted yet?",
+    "apply": "Join as Lawyer"
+  },
+  "forgot": {
+    "title": "Reset password",
+    "sub": "We will email you a link to choose a new password.",
+    "email": "Work email",
+    "emailPh": "partner@firm.com",
+    "submit": "Send reset link",
+    "backLogin": "Back to log in",
+    "sentTitle": "Check your inbox",
+    "sentBody": "If an account exists for that email, you will receive reset instructions shortly."
+  },
+  "join": {
+    "back": "Back to Lex",
+    "eyebrow": "For Counsel",
+    "title": "Why join—and how you get started",
+    "intro": "Lex connects you with clients who are actively seeking representation. Pick a subscription, complete checkout in under a minute with Stripe, then access your LexOS workspace.",
+    "why1Title": "Qualified inquiries",
+    "why1Body": "Prospects arrive with context—practice area, jurisdiction, and matter type—so you respond faster.",
+    "why2Title": "Professional presence",
+    "why2Body": "A structured profile, credentials view, and discreet consultation flow build trust before the first call.",
+    "why3Title": "Tools in one place",
+    "why3Body": "Pipeline, messages, calendar, and documents live in LexOS so nothing falls through the cracks.",
+    "processTitle": "Straightforward process",
+    "step1Title": "Choose a plan",
+    "step1Body": "Select the monthly tier that fits your practice.",
+    "step2Title": "Pay with Stripe",
+    "step2Body": "Secure checkout—cards, wallets, and invoicing where enabled.",
+    "step3Title": "Start in minutes",
+    "step3Body": "Return here and open your workspace as soon as payment succeeds.",
+    "setupWarn": "Setup required:",
+    "setupBody": "Add STRIPE_SECRET_KEY and three recurring Price IDs (STRIPE_PRICE_SOLO, STRIPE_PRICE_GROWTH, STRIPE_PRICE_FIRM) to enable live checkout. See .env.example in the repo.",
+    "membershipTitle": "Monthly membership",
+    "membershipSub": "All plans bill monthly through Stripe in EUR. Cancel anytime from your billing portal (link emailed after signup).",
+    "stripeBadge": "Powered by Stripe Checkout",
+    "popular": "Most popular",
+    "continuePay": "Continue & pay",
+    "redirecting": "Redirecting to Stripe…",
+    "configureStripe": "Configure Stripe to enable this button",
+    "plans": {
+      "solo": {
+        "name": "Solo",
+        "tagline": "Individual practitioner",
+        "priceDisplay": "€79",
+        "priceDetail": "per month",
+        "features": [
+          "Directory profile & intake inbox",
+          "Up to 25 active inquiries / mo",
+          "Secure messaging (basic)",
+          "Email support"
+        ]
+      },
+      "growth": {
+        "name": "Growth",
+        "tagline": "Small firm, more volume",
+        "priceDisplay": "€149",
+        "priceDetail": "per month",
+        "features": [
+          "Everything in Solo",
+          "Unlimited inquiries",
+          "Calendar sync & reminders",
+          "Document templates vault",
+          "Priority support"
+        ]
+      },
+      "firm": {
+        "name": "Firm",
+        "tagline": "Partners & teams",
+        "priceDisplay": "€299",
+        "priceDetail": "per month",
+        "features": [
+          "Everything in Growth",
+          "Up to 8 seat licenses",
+          "Shared pipeline & roles",
+          "Custom intake forms",
+          "Dedicated onboarding"
+        ]
+      }
+    }
+  },
+  "joinSuccess": {
+    "title": "You are in",
+    "body": "Your subscription is processing. Stripe will email a receipt. You can open LexOS now—billing details sync automatically.",
+    "dashboard": "Go to LexOS workspace",
+    "home": "Back to Lex"
+  },
+  "dashboard": {
+    "overviewSection": "Overview",
+    "workspaceSection": "Workspace",
+    "partner": "Partner",
+    "exit": "Exit Workspace",
+    "notificationsAria": "Notifications",
+    "titles": {
+      "dashboard": "Dashboard",
+      "clients": "Clients",
+      "messages": "Messages",
+      "calendar": "Calendar",
+      "documents": "Documents",
+      "requests": "All requests",
+      "notifications": "Notifications"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "clients": "Clients",
+      "messages": "Messages",
+      "calendar": "Calendar",
+      "documents": "Documents",
+      "requests": "All requests"
+    },
+    "home": {
+      "greeting": "Good morning, Eleanor.",
+      "greetingSub": "You have 3 new consultation requests today.",
+      "newLeads": "New Leads",
+      "newLeadsTrend": "+15% this week",
+      "activeCases": "Active Cases",
+      "activeCasesSub": "2 pending signatures",
+      "meetings": "Meetings",
+      "meetingsSub": "Next: 2:00 PM",
+      "recentRequests": "Recent Requests",
+      "seeAll": "See All",
+      "upcoming": "Upcoming",
+      "fullCalendar": "Full calendar"
+    },
+    "clients": {
+      "sub": "Manage matters and contact details for retained clients.",
+      "allTitle": "All clients",
+      "back": "← Back to overview"
+    },
+    "messages": {
+      "sub": "Secure messages with clients and prospects (placeholder inbox).",
+      "inbox": "Inbox",
+      "back": "← Back to overview"
+    },
+    "calendar": {
+      "sub": "Calendar and scheduling tools will connect here.",
+      "upcomingTitle": "Upcoming events",
+      "back": "← Back to overview"
+    },
+    "documents": {
+      "sub": "Matter folders and e-signatures (placeholder).",
+      "recentTitle": "Recent files",
+      "updated": "Updated {date}",
+      "back": "← Back to overview"
+    },
+    "requests": {
+      "sub": "Full pipeline of consultation and intake requests.",
+      "allTitle": "All requests",
+      "back": "← Back to overview"
+    },
+    "notifications": {
+      "sub": "Alerts across leads, messages, and calendar.",
+      "back": "← Back to overview"
+    }
+  }
+}

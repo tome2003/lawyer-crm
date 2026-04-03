@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import type { Lawyer } from "@/lib/lawyers";
 
 export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
+  const t = useTranslations("consult");
   const [submitted, setSubmitted] = useState(false);
 
   if (submitted) {
@@ -14,18 +16,17 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
       <div className="bg-paper-bright min-h-screen pb-24 pt-24">
         <div className="mx-auto max-w-lg px-4 text-center sm:px-6">
           <h1 className="font-serif text-ink text-3xl font-semibold tracking-tight">
-            Request received
+            {t("successTitle")}
           </h1>
           <p className="text-ink-muted mt-4">
-            Thank you. {lawyer.name} or their office will respond shortly to
-            coordinate a confidential consultation.
+            {t("successBody", { name: lawyer.name })}
           </p>
           <Link
             href="/"
             className="text-brass hover:text-brass-light mt-8 inline-flex items-center font-semibold"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Lex
+            {t("backLex")}
           </Link>
         </div>
       </div>
@@ -40,7 +41,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
           className="text-ink-muted hover:text-brass mb-8 flex items-center text-sm font-medium transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to profile
+          {t("back")}
         </Link>
 
         <div className="mb-10 flex items-center gap-4">
@@ -53,10 +54,10 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
           />
           <div>
             <h1 className="font-serif text-ink text-2xl font-semibold tracking-tight">
-              Request a consultation
+              {t("title")}
             </h1>
             <p className="text-ink-muted text-sm">
-              With {lawyer.name} — {lawyer.specialty}
+              {t("with", { name: lawyer.name, specialty: lawyer.specialty })}
             </p>
           </div>
         </div>
@@ -71,7 +72,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label className="text-ink mb-2 block text-sm font-semibold">
-                Full name
+                {t("fullName")}
               </label>
               <input
                 required
@@ -80,7 +81,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
             </div>
             <div>
               <label className="text-ink mb-2 block text-sm font-semibold">
-                Phone
+                {t("phone")}
               </label>
               <input
                 type="tel"
@@ -90,7 +91,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
           </div>
           <div>
             <label className="text-ink mb-2 block text-sm font-semibold">
-              Email
+              {t("email")}
             </label>
             <input
               type="email"
@@ -100,23 +101,23 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
           </div>
           <div>
             <label className="text-ink mb-2 block text-sm font-semibold">
-              Brief description of your matter
+              {t("matter")}
             </label>
             <textarea
               required
               rows={4}
               className="border-ink/12 bg-paper-bright text-ink focus:border-navy focus:ring-navy/12 w-full resize-none rounded-xl border px-4 py-3 outline-none focus:ring-4"
-              placeholder="Do not include confidential details you are uncomfortable sharing online."
+              placeholder={t("matterPlaceholder")}
             />
           </div>
           <div>
             <label className="text-ink mb-2 block text-sm font-semibold">
-              Preferred contact window
+              {t("contactWindow")}
             </label>
             <select className="border-ink/12 bg-paper-bright text-ink focus:border-navy w-full rounded-xl border px-4 py-3 outline-none">
-              <option>Business hours (ET)</option>
-              <option>Evenings</option>
-              <option>Either</option>
+              <option>{t("optionBusiness")}</option>
+              <option>{t("optionEvenings")}</option>
+              <option>{t("optionEither")}</option>
             </select>
           </div>
 
@@ -126,7 +127,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
               type="submit"
               className="bg-ink text-paper-bright relative flex w-full items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold tracking-wide transition-transform hover:scale-[1.02]"
             >
-              Submit request
+              {t("submit")}
               <ChevronRight className="ml-2 h-5 w-5 opacity-75" />
             </button>
           </div>

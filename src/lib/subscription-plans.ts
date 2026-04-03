@@ -1,60 +1,10 @@
 export type PlanId = "solo" | "growth" | "firm";
 
-export interface SubscriptionPlan {
-  id: PlanId;
-  name: string;
-  tagline: string;
-  priceDisplay: string;
-  priceDetail: string;
-  highlighted?: boolean;
-  features: string[];
-}
+export const PLAN_IDS: PlanId[] = ["solo", "growth", "firm"];
 
-/** Display catalog — amounts shown in UI. Link real Stripe Price IDs via env. */
-export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
-  {
-    id: "solo",
-    name: "Solo",
-    tagline: "Individual practitioner",
-    priceDisplay: "$79",
-    priceDetail: "per month",
-    features: [
-      "Directory profile & intake inbox",
-      "Up to 25 active inquiries / mo",
-      "Secure messaging (basic)",
-      "Email support",
-    ],
-  },
-  {
-    id: "growth",
-    name: "Growth",
-    tagline: "Small firm, more volume",
-    priceDisplay: "$149",
-    priceDetail: "per month",
-    highlighted: true,
-    features: [
-      "Everything in Solo",
-      "Unlimited inquiries",
-      "Calendar sync & reminders",
-      "Document templates vault",
-      "Priority support",
-    ],
-  },
-  {
-    id: "firm",
-    name: "Firm",
-    tagline: "Partners & teams",
-    priceDisplay: "$299",
-    priceDetail: "per month",
-    features: [
-      "Everything in Growth",
-      "Up to 8 seat licenses",
-      "Shared pipeline & roles",
-      "Custom intake forms",
-      "Dedicated onboarding",
-    ],
-  },
-];
+export function planHighlighted(id: PlanId): boolean {
+  return id === "growth";
+}
 
 const PRICE_ENV_KEYS: Record<PlanId, string> = {
   solo: "STRIPE_PRICE_SOLO",
@@ -72,7 +22,5 @@ export function getStripePriceIdForPlan(planId: string): string | null {
 }
 
 export function stripeConfiguredForPlans(): boolean {
-  return SUBSCRIPTION_PLANS.every(
-    (p) => !!process.env[PRICE_ENV_KEYS[p.id]]?.trim(),
-  );
+  return PLAN_IDS.every((id) => !!process.env[PRICE_ENV_KEYS[id]]?.trim());
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -9,7 +10,9 @@ import {
 } from "lucide-react";
 import type { Lawyer } from "@/lib/lawyers";
 
-export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
+export async function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
+  const t = await getTranslations("profile");
+
   return (
     <div className="bg-paper-bright min-h-screen pb-32 pt-16">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
@@ -17,7 +20,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
           href="/find-your-expert"
           className="text-ink-muted hover:text-brass mb-12 flex items-center text-sm font-medium tracking-wide transition-colors"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back to directory
+          <ArrowLeft className="mr-2 h-4 w-4" /> {t("backDirectory")}
         </Link>
 
         <div className="mb-16 flex flex-col items-center gap-12 md:flex-row md:items-start">
@@ -45,7 +48,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
               {lawyer.name}
             </h1>
             <p className="text-ink-muted mb-8 text-xl font-normal">
-              {lawyer.title} at{" "}
+              {lawyer.title} ·{" "}
               <span className="text-ink font-medium">{lawyer.firm}</span>
             </p>
 
@@ -56,7 +59,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
                   href={`/lawyers/${lawyer.id}/consult`}
                   className="bg-ink text-paper-bright relative flex w-full items-center justify-center rounded-full px-8 py-4 text-lg font-semibold tracking-wide transition-transform hover:scale-[1.02] sm:w-auto"
                 >
-                  Request consultation
+                  {t("requestConsultation")}
                   <ChevronRight className="ml-2 h-5 w-5 opacity-75" />
                 </Link>
               </div>
@@ -64,7 +67,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
                 href={`/lawyers/${lawyer.id}/credentials`}
                 className="border-ink/15 text-ink hover:border-brass/35 bg-paper-bright flex w-full items-center justify-center rounded-full border px-8 py-4 text-lg font-semibold tracking-wide transition-colors hover:bg-paper sm:w-auto"
               >
-                View credentials
+                {t("viewCredentials")}
               </Link>
             </div>
           </div>
@@ -74,7 +77,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
           <div className="space-y-8 md:col-span-2">
             <div className="border-ink/8 bg-paper rounded-2xl border p-8 md:p-10">
               <h2 className="font-serif text-ink mb-6 text-2xl font-semibold tracking-tight">
-                Overview
+                {t("overview")}
               </h2>
               <p className="text-ink-muted text-lg leading-relaxed">
                 {lawyer.bio}
@@ -83,7 +86,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
 
             <div className="border-ink/8 bg-paper rounded-2xl border p-8 md:p-10">
               <h2 className="font-serif text-ink mb-6 text-2xl font-semibold tracking-tight">
-                Notable matters
+                {t("notableMatters")}
               </h2>
               <div className="space-y-4">
                 {lawyer.cases.map((c, i) => (
@@ -96,7 +99,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
                         {c.title}
                       </h4>
                       <p className="text-navy mt-1 flex items-center text-sm font-medium">
-                        <CheckCircle2 className="mr-1.5 h-4 w-4 opacity-80" />{" "}
+                        <CheckCircle2 className="mr-1.5 h-4 w-4 opacity-80" />
                         {c.outcome}
                       </p>
                     </div>
@@ -112,13 +115,13 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
           <div className="space-y-8">
             <div className="border-ink/8 bg-paper rounded-2xl border p-8">
               <h3 className="font-serif text-ink mb-6 text-xl font-semibold tracking-tight">
-                Details
+                {t("details")}
               </h3>
 
               <div className="space-y-6">
                 <div>
                   <div className="text-ink-muted mb-1 text-[0.65rem] font-semibold tracking-[0.12em] uppercase">
-                    Location
+                    {t("location")}
                   </div>
                   <div className="text-ink flex items-center font-medium">
                     <MapPin className="text-ink/40 mr-2 h-4 w-4" />
@@ -127,13 +130,13 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
                 </div>
                 <div>
                   <div className="text-ink-muted mb-1 text-[0.65rem] font-semibold tracking-[0.12em] uppercase">
-                    Rate
+                    {t("rate")}
                   </div>
                   <div className="text-ink font-medium">{lawyer.rate}</div>
                 </div>
                 <div>
                   <div className="text-ink-muted mb-1 text-[0.65rem] font-semibold tracking-[0.12em] uppercase">
-                    Education
+                    {t("education")}
                   </div>
                   <div className="text-ink text-sm font-medium">
                     {lawyer.education}
@@ -141,7 +144,7 @@ export function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
                 </div>
                 <div>
                   <div className="text-ink-muted mb-1 text-[0.65rem] font-semibold tracking-[0.12em] uppercase">
-                    Admissions
+                    {t("admissions")}
                   </div>
                   <div className="text-ink space-y-1 text-sm font-medium">
                     {lawyer.admissions.map((ad, i) => (

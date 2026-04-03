@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { routing } from "@/i18n/routing";
 import { getStripePriceIdForPlan } from "@/lib/subscription-plans";
 
 function getBaseUrl() {
@@ -32,6 +33,15 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const planId = typeof body.planId === "string" ? body.planId : "";
+    const rawLocale =
+      typeof body.locale === "string" ? body.locale : routing.defaultLocale;
+    const locale = routing.locales.includes(
+      rawLocale as (typeof routing.locales)[number],
+    )
+      ? rawLocale
+      : routing.defaultLocale;
+    const pathPrefix =
+      locale === routing.defaultLocale ? "" : `/${locale}`;
     const priceId = getStripePriceIdForPlan(planId);
     if (!priceId) {
       return NextResponse.json(
@@ -50,8 +60,8 @@ export async function POST(request: Request) {
       mode: "subscription",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${base}/join/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${base}/join`,
+      success_url: `${base}${pathPrefix}/join/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${base}${pathPrefix}/join`,
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       subscription_data: {

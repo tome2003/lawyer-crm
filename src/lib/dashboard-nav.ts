@@ -8,35 +8,52 @@ import {
   Users,
 } from "lucide-react";
 
+export type DashboardNavLabelKey =
+  | "dashboard"
+  | "clients"
+  | "messages"
+  | "calendar"
+  | "documents"
+  | "requests";
+
 export interface DashboardNavItem {
   href: string;
-  label: string;
+  labelKey: DashboardNavLabelKey;
   icon: LucideIcon;
   badge?: string;
 }
 
 export const dashboardOverviewNav: DashboardNavItem[] = [
-  { href: "/dashboard", label: "Dashboard", icon: BarChart3 },
-  { href: "/dashboard/clients", label: "Clients", icon: Users },
+  { href: "/dashboard", labelKey: "dashboard", icon: BarChart3 },
+  { href: "/dashboard/clients", labelKey: "clients", icon: Users },
   {
     href: "/dashboard/messages",
-    label: "Messages",
+    labelKey: "messages",
     icon: MessageSquare,
     badge: "3",
   },
 ];
 
 export const dashboardWorkspaceNav: DashboardNavItem[] = [
-  { href: "/dashboard/calendar", label: "Calendar", icon: Calendar },
-  { href: "/dashboard/documents", label: "Documents", icon: FileText },
-  { href: "/dashboard/requests", label: "All requests", icon: Inbox },
+  { href: "/dashboard/calendar", labelKey: "calendar", icon: Calendar },
+  { href: "/dashboard/documents", labelKey: "documents", icon: FileText },
+  { href: "/dashboard/requests", labelKey: "requests", icon: Inbox },
 ];
 
-export function dashboardTitle(pathname: string): string {
-  const item = [...dashboardOverviewNav, ...dashboardWorkspaceNav].find(
-    (n) => n.href === pathname,
+export type DashboardTitleKey =
+  | DashboardNavLabelKey
+  | "notifications"
+  | "dashboard";
+
+export function dashboardTitleKey(pathname: string): DashboardTitleKey {
+  if (pathname.startsWith("/dashboard/notifications")) {
+    return "notifications";
+  }
+  const all = [...dashboardOverviewNav, ...dashboardWorkspaceNav];
+  const match = all.find((item) =>
+    item.href === "/dashboard"
+      ? pathname === "/dashboard"
+      : pathname.startsWith(item.href),
   );
-  if (item) return item.label;
-  if (pathname.startsWith("/dashboard/notifications")) return "Notifications";
-  return "Dashboard";
+  return match?.labelKey ?? "dashboard";
 }

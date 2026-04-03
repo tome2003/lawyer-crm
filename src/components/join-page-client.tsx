@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import {
   ArrowLeft,
@@ -11,35 +12,27 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { SUBSCRIPTION_PLANS, type PlanId } from "@/lib/subscription-plans";
+import { PLAN_IDS, planHighlighted, type PlanId } from "@/lib/subscription-plans";
 
-const whyJoin = [
-  {
-    title: "Qualified inquiries",
-    body: "Prospects arrive with context—practice area, jurisdiction, and matter type—so you respond faster.",
-    icon: Users,
-  },
-  {
-    title: "Professional presence",
-    body: "A structured profile, credentials view, and discreet consultation flow build trust before the first call.",
-    icon: Shield,
-  },
-  {
-    title: "Tools in one place",
-    body: "Pipeline, messages, calendar, and documents live in LexOS so nothing falls through the cracks.",
-    icon: Sparkles,
-  },
-];
-
-const steps = [
-  { step: "1", title: "Choose a plan", body: "Select the monthly tier that fits your practice." },
-  { step: "2", title: "Pay with Stripe", body: "Secure checkout—cards, wallets, and invoicing where enabled." },
-  { step: "3", title: "Start in minutes", body: "Return here and open your workspace as soon as payment succeeds." },
-];
+const whyIcons = [Users, Shield, Sparkles] as const;
 
 export function JoinPageClient({ checkoutReady }: { checkoutReady: boolean }) {
+  const t = useTranslations("join");
+  const locale = useLocale();
   const [loadingPlan, setLoadingPlan] = useState<PlanId | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const whyItems = [
+    { titleKey: "why1Title" as const, bodyKey: "why1Body" as const },
+    { titleKey: "why2Title" as const, bodyKey: "why2Body" as const },
+    { titleKey: "why3Title" as const, bodyKey: "why3Body" as const },
+  ];
+
+  const steps = [
+    { titleKey: "step1Title" as const, bodyKey: "step1Body" as const },
+    { titleKey: "step2Title" as const, bodyKey: "step2Body" as const },
+    { titleKey: "step3Title" as const, bodyKey: "step3Body" as const },
+  ];
 
   async function startCheckout(planId: PlanId) {
     setError(null);
@@ -48,7 +41,7 @@ export function JoinPageClient({ checkoutReady }: { checkoutReady: boolean }) {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId }),
+        body: JSON.stringify({ planId, locale }),
       });
       const data = (await res.json()) as { url?: string; error?: string };
       if (!res.ok) {
@@ -78,60 +71,57 @@ export function JoinPageClient({ checkoutReady }: { checkoutReady: boolean }) {
           className="text-ink-muted hover:text-brass mb-10 inline-flex items-center text-sm font-medium transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Lex
+          {t("back")}
         </Link>
 
         <div className="max-w-3xl">
           <p className="text-brass text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
-            For Counsel
+            {t("eyebrow")}
           </p>
           <h1 className="font-serif text-ink mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Why join—and how you get started
+            {t("title")}
           </h1>
           <p className="text-ink-muted mt-4 text-lg leading-relaxed">
-            Lex connects you with clients who are actively seeking representation.
-            Pick a subscription, complete checkout in under a minute with{" "}
-            <span className="text-ink font-medium">Stripe</span>, then access your
-            LexOS workspace.
+            {t("intro")}
           </p>
         </div>
 
-        {/* Why join */}
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {whyJoin.map((item) => {
-            const Icon = item.icon;
+          {whyItems.map((item, i) => {
+            const Icon = whyIcons[i];
             return (
               <div
-                key={item.title}
+                key={item.titleKey}
                 className="border-ink/10 bg-paper rounded-2xl border p-6 shadow-sm"
               >
                 <div className="bg-navy/8 mb-4 flex h-10 w-10 items-center justify-center rounded-lg">
                   <Icon className="text-navy h-5 w-5 opacity-90" strokeWidth={1.75} />
                 </div>
-                <h2 className="text-ink font-semibold tracking-tight">{item.title}</h2>
+                <h2 className="text-ink font-semibold tracking-tight">
+                  {t(item.titleKey)}
+                </h2>
                 <p className="text-ink-muted mt-2 text-sm leading-relaxed">
-                  {item.body}
+                  {t(item.bodyKey)}
                 </p>
               </div>
             );
           })}
         </div>
 
-        {/* Process */}
         <div className="mt-20 border-ink/10 bg-paper rounded-2xl border p-8 sm:p-10">
           <h2 className="font-serif text-ink text-2xl font-semibold tracking-tight">
-            Straightforward process
+            {t("processTitle")}
           </h2>
           <ol className="mt-8 grid gap-8 sm:grid-cols-3">
-            {steps.map((s) => (
-              <li key={s.step} className="relative flex gap-4">
+            {steps.map((s, i) => (
+              <li key={s.titleKey} className="relative flex gap-4">
                 <span className="border-brass/40 text-brass flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-paper-bright text-sm font-bold">
-                  {s.step}
+                  {i + 1}
                 </span>
                 <div>
-                  <p className="text-ink font-semibold">{s.title}</p>
+                  <p className="text-ink font-semibold">{t(s.titleKey)}</p>
                   <p className="text-ink-muted mt-1 text-sm leading-relaxed">
-                    {s.body}
+                    {t(s.bodyKey)}
                   </p>
                 </div>
               </li>
@@ -139,21 +129,13 @@ export function JoinPageClient({ checkoutReady }: { checkoutReady: boolean }) {
           </ol>
         </div>
 
-        {/* Stripe notice */}
         {!checkoutReady && (
           <div
             className="border-brass/30 bg-brass/8 text-ink mt-12 rounded-2xl border px-5 py-4 text-sm leading-relaxed"
             role="status"
           >
-            <strong className="font-semibold">Setup required:</strong> Add{" "}
-            <code className="bg-paper-bright/80 rounded px-1 py-0.5 text-xs">
-              STRIPE_SECRET_KEY
-            </code>{" "}
-            and three recurring Price IDs (
-            <code className="text-xs">STRIPE_PRICE_SOLO</code>,{" "}
-            <code className="text-xs">GROWTH</code>,{" "}
-            <code className="text-xs">FIRM</code>) to enable live checkout. See{" "}
-            <code className="text-xs">.env.example</code> in the repo.
+            <strong className="font-semibold">{t("setupWarn")}</strong>{" "}
+            {t("setupBody")}
           </div>
         )}
 
@@ -166,77 +148,87 @@ export function JoinPageClient({ checkoutReady }: { checkoutReady: boolean }) {
           </div>
         )}
 
-        {/* Pricing */}
         <div className="mt-16" id="plans">
           <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h2 className="font-serif text-ink text-3xl font-semibold tracking-tight">
-                Monthly membership
+                {t("membershipTitle")}
               </h2>
               <p className="text-ink-muted mt-2 max-w-xl text-sm">
-                All plans bill monthly through Stripe. Cancel anytime from your
-                billing portal (link emailed after signup).
+                {t("membershipSub")}
               </p>
             </div>
             <div className="text-ink-muted flex items-center gap-2 text-xs font-medium">
               <CreditCard className="h-4 w-4 opacity-70" />
-              Powered by Stripe Checkout
+              {t("stripeBadge")}
             </div>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {SUBSCRIPTION_PLANS.map((plan) => (
-              <div
-                key={plan.id}
-                className={`relative flex flex-col rounded-2xl border p-7 ${
-                  plan.highlighted
-                    ? "border-navy/25 from-paper-bright to-paper bg-gradient-to-b shadow-[0_12px_40px_rgba(26,39,68,0.1)] ring-1 ring-navy/10"
-                    : "border-ink/10 bg-paper-bright shadow-sm"
-                }`}
-              >
-                {plan.highlighted ? (
-                  <span className="bg-navy text-paper-bright absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[0.65rem] font-semibold tracking-wider uppercase">
-                    Most popular
-                  </span>
-                ) : null}
-                <h3 className="font-serif text-ink text-xl font-semibold">{plan.name}</h3>
-                <p className="text-ink-muted text-sm">{plan.tagline}</p>
-                <div className="mt-5 flex items-baseline gap-1">
-                  <span className="text-ink text-4xl font-semibold tracking-tight">
-                    {plan.priceDisplay}
-                  </span>
-                  <span className="text-ink-muted text-sm">{plan.priceDetail}</span>
-                </div>
-                <ul className="text-ink-muted mt-6 flex flex-1 flex-col gap-3 text-sm">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex gap-2">
-                      <CheckCircle2 className="text-navy mt-0.5 h-4 w-4 shrink-0 opacity-85" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  disabled={!checkoutReady || loadingPlan !== null}
-                  onClick={() => startCheckout(plan.id)}
-                  className="group bg-ink text-paper-bright relative mt-8 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold tracking-wide transition-all hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-45"
+            {PLAN_IDS.map((planId) => {
+              const features = t.raw(
+                `plans.${planId}.features`,
+              ) as string[];
+              const highlighted = planHighlighted(planId);
+              return (
+                <div
+                  key={planId}
+                  className={`relative flex flex-col rounded-2xl border p-7 ${
+                    highlighted
+                      ? "border-navy/25 from-paper-bright to-paper bg-gradient-to-b shadow-[0_12px_40px_rgba(26,39,68,0.1)] ring-1 ring-navy/10"
+                      : "border-ink/10 bg-paper-bright shadow-sm"
+                  }`}
                 >
-                  {loadingPlan === plan.id ? (
-                    "Redirecting to Stripe…"
-                  ) : (
-                    <>
-                      Continue & pay
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </>
-                  )}
-                </button>
-                {!checkoutReady ? (
-                  <p className="text-ink-muted mt-2 text-center text-xs">
-                    Configure Stripe to enable this button
+                  {highlighted ? (
+                    <span className="bg-navy text-paper-bright absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[0.65rem] font-semibold tracking-wider uppercase">
+                      {t("popular")}
+                    </span>
+                  ) : null}
+                  <h3 className="font-serif text-ink text-xl font-semibold">
+                    {t(`plans.${planId}.name`)}
+                  </h3>
+                  <p className="text-ink-muted text-sm">
+                    {t(`plans.${planId}.tagline`)}
                   </p>
-                ) : null}
-              </div>
-            ))}
+                  <div className="mt-5 flex items-baseline gap-1">
+                    <span className="text-ink text-4xl font-semibold tracking-tight">
+                      {t(`plans.${planId}.priceDisplay`)}
+                    </span>
+                    <span className="text-ink-muted text-sm">
+                      {t(`plans.${planId}.priceDetail`)}
+                    </span>
+                  </div>
+                  <ul className="text-ink-muted mt-6 flex flex-1 flex-col gap-3 text-sm">
+                    {features.map((f) => (
+                      <li key={f} className="flex gap-2">
+                        <CheckCircle2 className="text-navy mt-0.5 h-4 w-4 shrink-0 opacity-85" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    disabled={!checkoutReady || loadingPlan !== null}
+                    onClick={() => startCheckout(planId)}
+                    className="group bg-ink text-paper-bright relative mt-8 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold tracking-wide transition-all hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-45"
+                  >
+                    {loadingPlan === planId ? (
+                      t("redirecting")
+                    ) : (
+                      <>
+                        {t("continuePay")}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </button>
+                  {!checkoutReady ? (
+                    <p className="text-ink-muted mt-2 text-center text-xs">
+                      {t("configureStripe")}
+                    </p>
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
