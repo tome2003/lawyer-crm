@@ -31,7 +31,7 @@ export function DashboardShell({
           className="flex h-16 items-center px-6 pt-2 transition-opacity hover:opacity-90"
         >
           <span className="font-semibold tracking-tight text-white">
-            LexOS
+            VogadoOS
           </span>
         </Link>
 

@@ -26,7 +26,7 @@ export function ConsultationForm({ lawyer }: { lawyer: Lawyer }) {
             className="text-brass hover:text-brass-light mt-8 inline-flex items-center font-semibold"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            {t("backLex")}
+            {t("backVogado")}
           </Link>
         </div>
       </div>

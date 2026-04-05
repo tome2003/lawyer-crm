@@ -28,7 +28,7 @@ export function Navigation() {
             onClick={() => setOpen(false)}
           >
             <span className="font-serif text-ink truncate text-xl font-semibold tracking-tight">
-              Lex
+              Vogado
             </span>
           </Link>
 

@@ -1,14 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import {
-  Briefcase,
-  ChevronRight,
-  MapPin,
-  Search,
-  SlidersHorizontal,
-  Star,
-} from "lucide-react";
+import { ChevronRight, Search, SlidersHorizontal } from "lucide-react";
 import {
   getLocationOptions,
   getSpecialtyOptions,
@@ -202,59 +195,40 @@ export default async function FindYourExpertPage({
                 </Link>
               </div>
             ) : (
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {results.map((lawyer) => (
                   <li key={lawyer.id}>
                     <Link
                       href={`/lawyers/${lawyer.id}`}
-                      className="border-ink/10 bg-paper-bright group flex flex-col gap-4 rounded-xl border p-4 shadow-sm transition-all hover:border-navy/18 hover:shadow-[0_8px_30px_rgba(26,39,68,0.08)] sm:flex-row sm:items-center sm:gap-6 sm:p-5"
+                      className="group bg-paper-bright flex items-center gap-3 overflow-hidden rounded-xl border border-black/[0.06] p-3 pr-3.5 shadow-[0_1px_2px_rgba(15,23,41,0.04)] transition-[border-color,box-shadow] duration-300 hover:border-black/[0.1] hover:shadow-[0_6px_20px_rgba(15,23,41,0.06)] sm:gap-4 sm:p-3.5"
                     >
-                      <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-24">
+                      <div className="relative h-[4.5rem] w-[3.4rem] shrink-0 overflow-hidden rounded-lg sm:h-[4.75rem] sm:w-[3.5rem]">
                         <Image
                           src={lawyer.image}
                           alt=""
                           fill
-                          sizes="200px"
-                          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                          sizes="56px"
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                         />
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h2 className="font-serif text-ink group-hover:text-navy text-xl font-semibold tracking-tight transition-colors">
-                            {lawyer.name}
-                          </h2>
-                          <span className="border-brass/25 bg-brass/8 text-brass flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold">
-                            <Star className="text-brass-light mr-0.5 h-3 w-3 fill-current opacity-90" />
-                            {lawyer.rating}{" "}
-                            <span className="text-brass ml-1 font-normal opacity-90">
-                              ({lawyer.reviews})
-                            </span>
-                          </span>
-                        </div>
-                        <p className="text-ink-muted mt-0.5 text-sm">
-                          {lawyer.title} · {lawyer.firm}
+                        <p className="text-ink-muted line-clamp-1 text-[0.6rem] font-medium tracking-[0.12em] uppercase">
+                          {lawyer.specialty}
                         </p>
-                        <div className="text-ink-muted mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-                          <span className="flex items-center gap-1.5">
-                            <Briefcase className="text-ink/35 h-4 w-4 shrink-0" />
-                            {lawyer.specialty}
-                          </span>
-                          <span className="flex items-center gap-1.5">
-                            <MapPin className="text-ink/35 h-4 w-4 shrink-0" />
-                            {lawyer.location}
-                          </span>
-                        </div>
+                        <h2 className="font-serif text-ink group-hover:text-navy mt-0.5 truncate text-base font-semibold tracking-tight transition-colors sm:text-[1.05rem]">
+                          {lawyer.name}
+                        </h2>
+                        <p className="text-ink-muted/85 mt-0.5 truncate text-xs">
+                          {lawyer.location}
+                        </p>
                       </div>
 
-                      <div className="flex shrink-0 flex-col items-stretch gap-2 sm:items-end">
-                        <p className="text-ink text-sm font-semibold">
+                      <div className="flex shrink-0 items-center gap-1.5">
+                        <span className="text-ink text-sm font-semibold tabular-nums tracking-tight">
                           {lawyer.rate}
-                        </p>
-                        <span className="border-brass/20 bg-ink text-paper-bright inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition-all group-hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] sm:justify-end">
-                          {t("rateLabel")}
-                          <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                         </span>
+                        <ChevronRight className="text-ink-muted h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-ink" />
                       </div>
                     </Link>
                   </li>
