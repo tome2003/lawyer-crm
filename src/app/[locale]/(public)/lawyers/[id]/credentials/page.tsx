@@ -19,7 +19,7 @@ export default async function CredentialsPage({
   const t = await getTranslations("credentials");
 
   return (
-    <div className="bg-paper-bright min-h-screen pb-24 pt-16">
+    <div className="bg-paper-bright min-h-screen pb-24 pt-20">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         <Link
           href={`/lawyers/${lawyer.id}`}

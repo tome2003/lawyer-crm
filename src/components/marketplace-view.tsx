@@ -228,7 +228,7 @@ export function MarketplaceView() {
   ] as const;
 
   return (
-    <div className="bg-paper-bright min-h-screen pt-16">
+    <div className="bg-paper-bright min-h-screen pt-20">
       <div className="from-navy-deep via-[#121c2e] to-navy-deep relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b py-24 sm:py-40">
         <div className="absolute top-1/2 left-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-gradient-to-tr from-sky-500/30 via-indigo-500/25 to-violet-600/20 blur-[88px] md:h-[560px] md:w-[560px] md:blur-[120px]" />
         <div className="absolute top-[42%] left-[38%] h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-brass-light/20 via-amber-500/10 to-transparent blur-[72px] md:h-[360px] md:w-[360px] md:blur-[100px]" />

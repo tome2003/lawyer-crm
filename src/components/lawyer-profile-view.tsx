@@ -14,7 +14,7 @@ export async function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
   const t = await getTranslations("profile");
 
   return (
-    <div className="bg-paper-bright min-h-screen pb-32 pt-16">
+    <div className="bg-paper-bright min-h-screen pb-32 pt-20">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <Link
           href="/find-your-expert"

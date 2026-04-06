@@ -45,7 +45,7 @@ export default async function FindYourExpertPage({
   const matchingSuffix = q ? ` ${t("matching", { q })}` : "";
 
   return (
-    <div className="bg-paper min-h-screen pt-16 pb-20">
+    <div className="bg-paper min-h-screen pt-20 pb-20">
       <div className="border-ink/8 from-paper-bright relative overflow-hidden border-b bg-gradient-to-b to-paper">
         <div className="pointer-events-none absolute top-0 right-0 h-64 w-64 rounded-full bg-gradient-to-bl from-indigo-400/12 via-transparent to-transparent blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-gradient-to-tr from-brass/10 to-transparent blur-3xl" />

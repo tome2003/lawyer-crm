@@ -28,9 +28,9 @@ export function DashboardShell({
       <aside className="hidden w-64 shrink-0 flex-col border-r border-white/10 bg-[#111111] md:flex">
         <Link
           href="/dashboard"
-          className="flex h-16 items-center px-6 pt-2 transition-opacity hover:opacity-90"
+          className="flex min-h-16 items-center px-6 py-3 transition-opacity hover:opacity-90"
         >
-          <span className="font-semibold tracking-tight text-white">
+          <span className="text-xl font-semibold leading-tight tracking-tight text-white">
             VogadoOS
           </span>
         </Link>

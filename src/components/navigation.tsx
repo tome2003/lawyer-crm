@@ -21,13 +21,13 @@ export function Navigation() {
   return (
     <nav className="border-ink/8 bg-paper-bright/85 fixed top-0 z-50 w-full border-b backdrop-blur-2xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[4.25rem] items-center justify-between gap-3">
+        <div className="flex min-h-[4.5rem] items-center justify-between gap-3 sm:min-h-[5rem]">
           <Link
             href="/"
-            className="flex min-w-0 cursor-pointer items-center"
+            className="flex shrink-0 cursor-pointer items-center"
             onClick={() => setOpen(false)}
           >
-            <span className="font-serif text-ink truncate text-xl font-semibold tracking-tight">
+            <span className="font-serif text-ink text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
               Vogado
             </span>
           </Link>
