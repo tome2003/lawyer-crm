@@ -1,16 +1,9 @@
-import { Footer } from "@/components/footer";
-import { Navigation } from "@/components/navigation";
+import { PublicShell } from "@/components/public-shell";
 
 export default function PublicLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Navigation />
-      <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-      <Footer />
-    </div>
-  );
+  return <PublicShell>{children}</PublicShell>;
 }

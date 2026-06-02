@@ -44,6 +44,7 @@
     "eyebrow": "Erro 404",
     "title": "Página não encontrada",
     "body": "A página que procura não existe ou foi movida.",
+    "hint": "Pode voltar à página inicial ou contactar-me diretamente.",
     "cta": "Voltar ao início"
   },
   "landing": {

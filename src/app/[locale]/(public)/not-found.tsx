@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { NotFoundView } from "@/components/not-found-view";
-import { PublicShell } from "@/components/public-shell";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("notFound");
@@ -11,10 +10,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function NotFound() {
-  return (
-    <PublicShell>
-      <NotFoundView />
-    </PublicShell>
-  );
+export default function PublicNotFound() {
+  return <NotFoundView />;
 }
