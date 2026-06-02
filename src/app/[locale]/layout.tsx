@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { absoluteUrl } from "@/lib/site-url";
+import { absoluteUrl, getSiteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +36,7 @@ export async function generateMetadata({
   const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
   const canonicalPath = `${localePrefix}/`;
   return {
+    metadataBase: new URL(getSiteUrl()),
     title: t("title"),
     description: t("description"),
     manifest: "/site.webmanifest",
@@ -56,7 +57,7 @@ export async function generateMetadata({
       alternateLocale: locale === "pt" ? ["en_GB"] : ["pt_PT"],
       images: [
         {
-          url: absoluteUrl("/manuel-gg.png"),
+          url: "/manuel-gg.png",
           width: 908,
           height: 1024,
           alt: t("title"),
@@ -67,7 +68,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: [absoluteUrl("/manuel-gg.png")],
+      images: ["/manuel-gg.png"],
     },
     appleWebApp: {
       capable: true,
