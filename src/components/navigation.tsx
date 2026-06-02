@@ -21,7 +21,7 @@ export function Navigation() {
               <span className="font-serif text-ink truncate text-lg font-semibold tracking-tight sm:text-2xl">
                 {t("brandName")}
               </span>
-              <span className="text-ink-muted mt-0.5 hidden truncate text-[0.7rem] font-medium tracking-wide sm:block sm:text-xs">
+              <span className="text-ink-muted mt-0.5 hidden truncate text-xs font-medium tracking-wide sm:block sm:text-sm">
                 {t("brandSub")}
               </span>
             </span>
@@ -30,11 +30,11 @@ export function Navigation() {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/#contact"
-              className="bg-ink text-paper-bright rounded-full px-4 py-2 text-sm font-semibold tracking-wide shadow-[0_1px_2px_rgba(21,25,34,0.14)] transition-all hover:scale-[1.02] hover:shadow-[0_0_26px_rgba(59,130,246,0.2),0_0_50px_rgba(139,115,85,0.07)] sm:px-5 sm:py-2.5"
+              className="bg-ink text-paper-bright rounded-full px-4 py-2 text-base font-semibold tracking-wide shadow-[0_1px_2px_rgba(21,25,34,0.14)] transition-all hover:scale-[1.02] hover:shadow-[0_0_26px_rgba(59,130,246,0.2),0_0_50px_rgba(139,115,85,0.07)] sm:px-5 sm:py-2.5"
             >
               {t("contactMe")}
             </Link>
-            <div className="text-ink-muted flex items-center gap-1 text-xs font-medium">
+            <div className="text-ink-muted flex items-center gap-1 text-sm font-medium">
               <span className="sr-only">{t("language")}</span>
               <Link
                 href={pathname}

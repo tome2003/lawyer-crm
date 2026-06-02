@@ -13,13 +13,16 @@ import {
 import Image from "next/image";
 
 const sectionTitle =
-  "font-serif text-ink text-pretty text-2xl font-semibold tracking-tight sm:text-3xl";
+  "font-serif text-ink text-pretty text-3xl font-semibold tracking-tight sm:text-4xl";
+
+const eyebrowClass =
+  "text-brass font-semibold tracking-[0.22em] uppercase text-xs sm:text-sm";
 
 const contactLabelClass =
-  "text-ink-muted text-[0.65rem] font-semibold tracking-[0.18em] uppercase";
+  "text-ink-muted text-xs font-semibold tracking-[0.18em] uppercase";
 
 const contactValueClass =
-  "text-ink text-sm font-semibold tracking-tight leading-snug";
+  "text-ink text-base font-semibold tracking-tight leading-snug";
 
 function ContactRow({
   icon: Icon,
@@ -79,32 +82,32 @@ export function LawyerLanding() {
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <p className="text-brass mb-4 text-[0.65rem] font-semibold tracking-[0.25em] uppercase">
+              <p className={`${eyebrowClass} mb-4 tracking-[0.25em]`}>
                 {t("eyebrow")}
               </p>
-              <h1 className="font-serif text-paper-bright text-balance text-[2.1rem] leading-[1.06] font-semibold tracking-tight sm:text-6xl">
+              <h1 className="font-serif text-paper-bright text-balance text-[2.35rem] leading-[1.06] font-semibold tracking-tight sm:text-6xl">
                 {t("heroName")}
               </h1>
-              <h2 className="text-paper-bright/80 mt-3 max-w-2xl text-balance text-sm font-medium leading-relaxed sm:mt-4 sm:text-xl">
+              <h2 className="text-paper-bright/80 mt-3 max-w-2xl text-balance text-base font-medium leading-relaxed sm:mt-4 sm:text-2xl">
                 {t("heroDescription")}
               </h2>
 
               <div className="mt-8 flex flex-col items-start gap-3">
-                <div className="text-paper-bright/70 inline-flex items-center gap-2 text-sm">
+                <div className="text-paper-bright/70 inline-flex items-center gap-2 text-base">
                   <Scale className="h-4 w-4" strokeWidth={1.75} />
                   {t("heroSmallLine")}
                 </div>
                 <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
                   <a
                     href={`mailto:${t("contactEmail")}`}
-                    className="border-paper-bright/14 bg-paper-bright/8 hover:bg-paper-bright/12 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold tracking-wide text-paper-bright transition-colors sm:px-6 sm:py-4"
+                    className="border-paper-bright/14 bg-paper-bright/8 hover:bg-paper-bright/12 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-base font-semibold tracking-wide text-paper-bright transition-colors sm:px-6 sm:py-4"
                   >
                     <Mail className="h-4 w-4 opacity-90" strokeWidth={1.75} />
                     {t("contactEmail")}
                   </a>
                   <a
                     href={`tel:${t("contactPhoneTel")}`}
-                    className="border-paper-bright/14 bg-paper-bright/8 hover:bg-paper-bright/12 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold tracking-wide text-paper-bright transition-colors sm:px-6 sm:py-4"
+                    className="border-paper-bright/14 bg-paper-bright/8 hover:bg-paper-bright/12 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-base font-semibold tracking-wide text-paper-bright transition-colors sm:px-6 sm:py-4"
                   >
                     <Phone className="h-4 w-4 opacity-90" strokeWidth={1.75} />
                     {t("contactPhone")}
@@ -133,10 +136,10 @@ export function LawyerLanding() {
         <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <p className="text-brass mb-3 text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+              <p className={`${eyebrowClass} mb-3`}>
                 {t("heroHighlightsTitle")}
               </p>
-              <ul className="mt-4 grid gap-4 text-sm leading-relaxed text-ink-muted sm:mt-5 sm:grid-cols-2 sm:text-base">
+              <ul className="text-ink-muted mt-4 grid gap-4 text-base leading-relaxed sm:mt-5 sm:grid-cols-2 sm:text-lg">
                 {(
                   [
                     "heroHighlight1",
@@ -158,10 +161,10 @@ export function LawyerLanding() {
             </div>
 
             <div className="lg:col-span-5">
-              <p className="text-brass mb-3 text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+              <p className={`${eyebrowClass} mb-3`}>
                 {t("heroEducationTitle")}
               </p>
-              <p className="text-ink-muted text-sm leading-relaxed sm:text-base">
+              <p className="text-ink-muted text-base leading-relaxed sm:text-lg">
                 {t("heroEducationBody")}
               </p>
             </div>
@@ -175,13 +178,13 @@ export function LawyerLanding() {
         aria-labelledby="services-heading"
       >
         <div className="w-full px-4 sm:px-6 lg:px-10">
-          <p className="text-brass mb-3 text-center text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+          <p className={`${eyebrowClass} mb-3 text-center`}>
             {t("servicesEyebrow")}
           </p>
           <h2 id="services-heading" className={`${sectionTitle} text-center`}>
             {t("servicesTitle")}
           </h2>
-          <p className="text-ink-muted mt-4 text-center text-sm leading-relaxed sm:text-base">
+          <p className="text-ink-muted mt-4 text-center text-base leading-relaxed sm:text-lg">
             {t("servicesSub")}
           </p>
 
@@ -206,10 +209,10 @@ export function LawyerLanding() {
                     strokeWidth={1.75}
                   />
                   <div className="min-w-0">
-                    <h3 className="text-ink text-base font-semibold tracking-tight">
+                    <h3 className="text-ink text-lg font-semibold tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="text-ink-muted mt-1 text-sm leading-relaxed">
+                    <p className="text-ink-muted mt-1 text-base leading-relaxed">
                       {item.body}
                     </p>
                   </div>
@@ -227,13 +230,13 @@ export function LawyerLanding() {
       >
         <div className="w-full px-4 sm:px-6 lg:px-10">
           <div className="text-center">
-            <p className="text-brass mb-3 text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+            <p className={`${eyebrowClass} mb-3`}>
               {t("contactEyebrow")}
             </p>
             <h2 id="contact-heading" className={sectionTitle}>
               {t("contactTitle")}
             </h2>
-            <p className="text-ink-muted mt-4 text-sm leading-relaxed sm:text-base">
+            <p className="text-ink-muted mt-4 text-base leading-relaxed sm:text-lg">
               {t("contactSub")}
             </p>
           </div>
@@ -270,7 +273,7 @@ export function LawyerLanding() {
           <div className="mx-auto mt-10 flex max-w-xl flex-col justify-center gap-3 sm:flex-row">
             <a
               href={`tel:${t("contactPhoneTel")}`}
-              className="bg-ink text-paper-bright rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide shadow-[0_1px_2px_rgba(21,25,34,0.12)] transition-all hover:scale-[1.02] hover:shadow-[0_0_22px_rgba(59,130,246,0.18),0_0_40px_rgba(139,115,85,0.06)]"
+              className="bg-ink text-paper-bright rounded-full px-8 py-3.5 text-base font-semibold tracking-wide shadow-[0_1px_2px_rgba(21,25,34,0.12)] transition-all hover:scale-[1.02] hover:shadow-[0_0_22px_rgba(59,130,246,0.18),0_0_40px_rgba(139,115,85,0.06)]"
             >
               {t("contactCallCta")}
             </a>
@@ -278,13 +281,13 @@ export function LawyerLanding() {
               href={t("contactWhatsappUrl")}
               target="_blank"
               rel="noreferrer"
-              className="border-ink/12 text-ink hover:border-ink/22 inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors"
+              className="border-ink/12 text-ink hover:border-ink/22 inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 text-base font-semibold tracking-wide transition-colors"
             >
               <MessageCircle className="h-4 w-4" strokeWidth={1.75} />
               {t("contactWhatsappCta")}
             </a>
           </div>
-          <p className="text-ink-muted mt-6 text-center text-xs leading-relaxed">
+          <p className="text-ink-muted mt-6 text-center text-sm leading-relaxed sm:text-base">
             {t("contactNote")}
           </p>
         </div>
