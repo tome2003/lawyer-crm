@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Navigation } from "@/components/navigation";
 
 export default function PublicLayout({
@@ -6,9 +7,10 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navigation />
-      {children}
-    </>
+      <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+      <Footer />
+    </div>
   );
 }

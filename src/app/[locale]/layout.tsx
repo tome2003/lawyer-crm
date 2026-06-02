@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { absoluteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,42 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
+  const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const canonicalPath = `${localePrefix}/`;
   return {
     title: t("title"),
     description: t("description"),
     manifest: "/site.webmanifest",
+    alternates: {
+      canonical: absoluteUrl(canonicalPath),
+      languages: {
+        en: absoluteUrl("/en/"),
+        pt: absoluteUrl("/"),
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: absoluteUrl(canonicalPath),
+      siteName: "Manuel GG",
+      type: "website",
+      locale: locale === "pt" ? "pt_PT" : "en_GB",
+      alternateLocale: locale === "pt" ? ["en_GB"] : ["pt_PT"],
+      images: [
+        {
+          url: absoluteUrl("/manuel-gg.png"),
+          width: 908,
+          height: 1024,
+          alt: t("title"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [absoluteUrl("/manuel-gg.png")],
+    },
     appleWebApp: {
       capable: true,
       title: t("title"),
