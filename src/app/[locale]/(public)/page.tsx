@@ -1,14 +1,18 @@
 import { LawyerLanding } from "@/components/lawyer-landing";
 import { JsonLd } from "@/components/jsonld";
 import { getTranslations } from "next-intl/server";
-import { absoluteUrl } from "@/lib/site-url";
+import { absoluteUrl, canonicalUrlForLocale } from "@/lib/site-url";
+import { getLocale } from "next-intl/server";
 
 export default async function HomePage() {
+  const locale = await getLocale();
   const t = await getTranslations("landing");
   const tFooter = await getTranslations("lawyerFooter");
 
-  const canonicalPath = "/";
-  const url = absoluteUrl(canonicalPath);
+  const url =
+    locale === "pt" || locale === "en"
+      ? canonicalUrlForLocale(locale)
+      : canonicalUrlForLocale("pt");
 
   const services = [
     {

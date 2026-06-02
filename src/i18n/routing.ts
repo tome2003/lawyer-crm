@@ -6,4 +6,6 @@ export const routing = defineRouting({
   localePrefix: "as-needed",
   // Unprefixed URLs stay Portuguese; English only via /en/... or language switcher.
   localeDetection: false,
+  // Avoid duplicate/conflicting Link headers; hreflang lives in Next.js metadata.
+  alternateLinks: false,
 });

@@ -4,7 +4,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { absoluteUrl, getSiteUrl } from "@/lib/site-url";
+import {
+  canonicalUrlForLocale,
+  getSiteUrl,
+  localeAlternateLanguages,
+} from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +37,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
-  const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
-  const canonicalPath = `${localePrefix}/`;
+  const languages = localeAlternateLanguages();
+  const canonical =
+    locale === "pt" || locale === "en"
+      ? canonicalUrlForLocale(locale)
+      : canonicalUrlForLocale(routing.defaultLocale);
+
   return {
     metadataBase: new URL(getSiteUrl()),
     title: t("title"),
@@ -48,16 +56,13 @@ export async function generateMetadata({
       apple: [{ url: "/web-app-manifest-192x192.png", sizes: "192x192" }],
     },
     alternates: {
-      canonical: absoluteUrl(canonicalPath),
-      languages: {
-        en: absoluteUrl("/en/"),
-        pt: absoluteUrl("/"),
-      },
+      canonical,
+      languages,
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: absoluteUrl(canonicalPath),
+      url: canonical,
       siteName: "Manuel GG",
       type: "website",
       locale: locale === "pt" ? "pt_PT" : "en_GB",

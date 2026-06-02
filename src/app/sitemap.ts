@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { absoluteUrl } from "@/lib/site-url";
+import { canonicalUrlForLocale, localeAlternateLanguages } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-
-  const ptUrl = absoluteUrl("/");
-  const enUrl = absoluteUrl("/en/");
+  const languages = localeAlternateLanguages();
+  const ptUrl = canonicalUrlForLocale("pt");
+  const enUrl = canonicalUrlForLocale("en");
 
   return [
     {
@@ -13,25 +13,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
-      alternates: {
-        languages: {
-          pt: ptUrl,
-          en: enUrl,
-        },
-      },
+      alternates: { languages },
     },
     {
       url: enUrl,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-      alternates: {
-        languages: {
-          pt: ptUrl,
-          en: enUrl,
-        },
-      },
+      alternates: { languages },
     },
   ];
 }
-
