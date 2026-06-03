@@ -1,12 +1,27 @@
+import type { Metadata } from "next";
 import { LawyerLanding } from "@/components/lawyer-landing";
 import { JsonLd } from "@/components/jsonld";
 import { getTranslations } from "next-intl/server";
 import { absoluteUrl, canonicalUrlForLocale } from "@/lib/site-url";
 import { getLocale } from "next-intl/server";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const title = t("title");
+
+  return {
+    title: { absolute: title },
+    description: t("description"),
+    openGraph: { title, description: t("description") },
+    twitter: { title, description: t("description") },
+  };
+}
+
 export default async function HomePage() {
   const locale = await getLocale();
   const t = await getTranslations("landing");
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
   const tFooter = await getTranslations("lawyerFooter");
 
   const url =
@@ -46,6 +61,19 @@ export default async function HomePage() {
       description: t("service6Body"),
     },
   ] as const;
+
+  const pageTitle = tMeta("title");
+
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": url,
+    url,
+    name: pageTitle,
+    description: tMeta("description"),
+    inLanguage: locale === "pt" ? "pt-PT" : "en-GB",
+    about: { "@id": `${url}#manuel-gg` },
+  };
 
   const legalService = {
     "@context": "https://schema.org",
@@ -107,6 +135,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={webPage} />
       <JsonLd data={legalService} />
       <LawyerLanding />
     </>

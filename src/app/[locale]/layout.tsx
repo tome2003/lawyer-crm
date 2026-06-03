@@ -43,9 +43,11 @@ export async function generateMetadata({
       ? canonicalUrlForLocale(locale)
       : canonicalUrlForLocale(routing.defaultLocale);
 
+  const pageTitle = t("title");
+
   return {
     metadataBase: new URL(getSiteUrl()),
-    title: t("title"),
+    title: { absolute: pageTitle },
     description: t("description"),
     manifest: "/site.webmanifest",
     icons: {
@@ -60,7 +62,7 @@ export async function generateMetadata({
       languages,
     },
     openGraph: {
-      title: t("title"),
+      title: pageTitle,
       description: t("description"),
       url: canonical,
       siteName: "Manuel GG",
@@ -72,19 +74,19 @@ export async function generateMetadata({
           url: "/manuel-gg.png",
           width: 908,
           height: 1024,
-          alt: t("title"),
+          alt: pageTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
+      title: pageTitle,
       description: t("description"),
       images: ["/manuel-gg.png"],
     },
     appleWebApp: {
       capable: true,
-      title: t("title"),
+      title: pageTitle,
     },
   };
 }
