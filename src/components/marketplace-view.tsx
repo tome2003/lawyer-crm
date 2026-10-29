@@ -174,7 +174,7 @@ export function MarketplaceView() {
   const tNav = useTranslations("nav");
   const tFilters = useTranslations("findExpert");
   const locale = useLocale();
-  const findExpertAction = pathnameWithLocale("/find-your-expert", locale);
+  const findLawyerAction = pathnameWithLocale("/find-your-lawyer", locale);
 
   const specialties = useMemo(
     () => getSpecialtyOptions(MOCK_LAWYERS),
@@ -248,7 +248,7 @@ export function MarketplaceView() {
           </p>
 
           <form
-            action={findExpertAction}
+            action={findLawyerAction}
             method="get"
             className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/12 bg-white/8 p-4 shadow-[0_8px_40px_rgba(0,0,0,0.45),0_0_1px_rgba(255,255,255,0.4)_inset] backdrop-blur-xl sm:mt-12 sm:p-5"
           >
@@ -575,7 +575,7 @@ export function MarketplaceView() {
 
         <p className="mb-8 text-center">
           <Link
-            href="/find-your-expert"
+            href="/find-your-lawyer"
             className="text-brass hover:text-brass-light inline-flex items-center text-sm font-semibold tracking-wide underline decoration-brass/40 underline-offset-4 transition-colors"
           >
             {t("browseDirectory")}

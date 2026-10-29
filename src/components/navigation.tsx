@@ -15,19 +15,19 @@ export function Navigation() {
         <div className="flex min-h-[4.25rem] items-center justify-between gap-3 sm:min-h-[5rem]">
           <Link
             href="/"
-            className="flex min-w-0 shrink-0 cursor-pointer items-center"
+            className="flex min-w-0 flex-1 cursor-pointer items-center"
           >
             <span className="flex min-w-0 flex-col leading-tight">
-              <span className="font-serif text-ink truncate text-lg font-semibold tracking-tight sm:text-2xl">
+              <span className="font-serif text-ink text-base font-semibold tracking-tight sm:text-xl lg:text-2xl">
                 {t("brandName")}
               </span>
-              <span className="text-ink-muted mt-0.5 hidden truncate text-sm font-medium tracking-wide sm:block sm:text-base">
+              <span className="text-ink-muted mt-0.5 hidden text-sm font-medium tracking-wide sm:block sm:text-base">
                 {t("brandSub")}
               </span>
             </span>
           </Link>
 
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex shrink-0 items-center gap-3 sm:gap-4">
             <Link
               href="/#contact"
               className="bg-ink text-paper-bright rounded-full px-4 py-2 text-lg font-semibold tracking-wide shadow-[0_1px_2px_rgba(21,25,34,0.14)] transition-all hover:scale-[1.02] hover:shadow-[0_0_26px_rgba(59,130,246,0.2),0_0_50px_rgba(139,115,85,0.07)] sm:px-5 sm:py-2.5"

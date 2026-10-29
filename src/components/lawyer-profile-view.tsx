@@ -17,7 +17,7 @@ export async function LawyerProfileView({ lawyer }: { lawyer: Lawyer }) {
     <div className="bg-paper-bright min-h-screen pb-32 pt-20">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
         <Link
-          href="/find-your-expert"
+          href="/find-your-lawyer"
           className="text-ink-muted hover:text-brass mb-12 flex items-center text-sm font-medium tracking-wide transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" /> {t("backDirectory")}

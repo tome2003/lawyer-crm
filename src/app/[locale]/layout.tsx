@@ -65,7 +65,7 @@ export async function generateMetadata({
       title: pageTitle,
       description: t("description"),
       url: canonical,
-      siteName: "Manuel GG",
+      siteName: "Manuel Ganança Gonçalves",
       type: "website",
       locale: locale === "pt" ? "pt_PT" : "en_GB",
       alternateLocale: locale === "pt" ? ["en_GB"] : ["pt_PT"],

@@ -72,7 +72,7 @@ export default async function HomePage() {
     name: pageTitle,
     description: tMeta("description"),
     inLanguage: locale === "pt" ? "pt-PT" : "en-GB",
-    about: { "@id": `${url}#manuel-gg` },
+    about: { "@id": `${url}#manuel-gananca-goncalves` },
   };
 
   const legalService = {
@@ -81,7 +81,7 @@ export default async function HomePage() {
     name: t("heroName"),
     description: t("heroDescription"),
     url,
-    "@id": `${url}#manuel-gg`,
+    "@id": `${url}#manuel-gananca-goncalves`,
     image: absoluteUrl("/manuel-gg.png"),
     areaServed: {
       "@type": "AdministrativeArea",
@@ -121,7 +121,7 @@ export default async function HomePage() {
           "@type": "Service",
           name: s.title,
           description: s.description,
-          provider: { "@id": `${url}#manuel-gg` },
+          provider: { "@id": `${url}#manuel-gananca-goncalves` },
         },
       })),
     },

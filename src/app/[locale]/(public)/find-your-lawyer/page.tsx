@@ -10,7 +10,7 @@ import {
 import { pathnameWithLocale } from "@/i18n/pathname";
 import { MOCK_LAWYERS } from "@/lib/lawyers";
 
-export default async function FindYourExpertPage({
+export default async function FindYourLawyerPage({
   params,
   searchParams,
 }: {
@@ -24,7 +24,7 @@ export default async function FindYourExpertPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations("findExpert");
-  const formAction = pathnameWithLocale("/find-your-expert", locale);
+  const formAction = pathnameWithLocale("/find-your-lawyer", locale);
 
   const paramsSp = await searchParams;
   const q = paramsSp.q ?? "";
@@ -165,7 +165,7 @@ export default async function FindYourExpertPage({
               </form>
 
               <Link
-                href="/find-your-expert"
+                href="/find-your-lawyer"
                 className="text-ink-muted hover:text-brass mt-4 block text-center text-sm font-medium transition-colors"
               >
                 {t("clearAll")}
@@ -188,7 +188,7 @@ export default async function FindYourExpertPage({
                 </p>
                 <p className="text-ink-muted mt-2 text-sm">{t("emptySub")}</p>
                 <Link
-                  href="/find-your-expert"
+                  href="/find-your-lawyer"
                   className="text-brass hover:text-brass-light mt-6 inline-block text-sm font-semibold transition-colors"
                 >
                   {t("resetDirectory")}

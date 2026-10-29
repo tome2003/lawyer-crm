@@ -12,8 +12,8 @@ export default async function SearchPage({
   const q = typeof sp.q === "string" && sp.q ? sp.q : undefined;
   redirect({
     href: q
-      ? { pathname: "/find-your-expert", query: { q } }
-      : "/find-your-expert",
+      ? { pathname: "/find-your-lawyer", query: { q } }
+      : "/find-your-lawyer",
     locale,
   });
 }
